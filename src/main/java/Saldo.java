@@ -1,3 +1,5 @@
+import org.apache.commons.math3.util.Precision;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -20,7 +22,7 @@ public class Saldo {
 
             while ((line = reader.readLine()) != null){
                 String[] data = line.split(",");
-                if(amount > Float.parseFloat(data[0]) && amount < Float.parseFloat(data[1]){
+                if(amount > Float.parseFloat(data[0]) && amount < Float.parseFloat(data[1])){
                     rate = Float.parseFloat(data[2]);
                     properAmount = true;
                 }
@@ -32,8 +34,12 @@ public class Saldo {
     }
 
 
-    public boolean isProperAmount() {
+    protected boolean isProperAmount() {
         return properAmount;
+    }
+
+    protected float calculatedRate(float amount){
+        return Precision.round(amount * ((100 + rate)/100),2);
     }
 
 
