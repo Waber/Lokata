@@ -22,7 +22,7 @@ public class Saldo {
 
             while ((line = reader.readLine()) != null){
                 String[] data = line.split(",");
-                if(amount > Float.parseFloat(data[0]) && amount < Float.parseFloat(data[1])){
+                if(amount >= Float.parseFloat(data[0]) && amount <= Float.parseFloat(data[1])){
                     rate = Float.parseFloat(data[2]);
                     properAmount = true;
                 }
